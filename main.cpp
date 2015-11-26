@@ -2,6 +2,7 @@
 
 using namespace std;
 
+// Þórdís að prufa git.
 int main()
 {
     int tala;
