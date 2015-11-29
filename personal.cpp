@@ -17,6 +17,25 @@ Personal::Personal()
 
 }
 
+Personal::addPerson()
+{
+    Personal peronal;
+
+    cout << "Name: ";
+    cin >> peronal.name;
+
+    cout << "Gender: ";
+    cin >> peronal.gender;
+
+    cout << "Birth: ";
+    cin >> peronal.birth;
+
+    cout << "Death: ";
+    cin >> peronal.death;
+
+    return peronal;
+}
+
 void Personal::loadPersonal()
 {
 
@@ -33,6 +52,11 @@ void loadNames()
 
 void loadGenders()
 {
+    if(!genders) //Test if file open
+    {
+        cout << "Error opening genders.txt file" << endl;
+        exit(0);
+    }
 
 }
 
