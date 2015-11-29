@@ -33,6 +33,11 @@ void loadNames()
 
 void loadGenders()
 {
+    if(!genders) //Test if file open
+    {
+        cout << "Error opening genders.txt file" << endl;
+        exit(0);
+    }
 
 }
 
