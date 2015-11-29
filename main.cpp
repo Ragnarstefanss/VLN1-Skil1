@@ -1,10 +1,16 @@
+#include <QCoreApplication>
+#include "personal.h"
+#include <fstream>
 #include <iostream>
+#include <vector>
+#include <string>
 
 using namespace std;
 
-// Þórdís að prufa git.
-int main()
+
+int main(int argc, char *argv[])
 {
+    QCoreApplication a(argc, argv);
     int input_val;
 
     cout << "1) Add a new person" << endl
@@ -17,5 +23,5 @@ int main()
 
     cout << "You picked the number: " << input_val << endl;
 
-    return 0;
+    return a.exec();
 }
