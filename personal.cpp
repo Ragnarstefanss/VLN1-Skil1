@@ -329,7 +329,7 @@ void Personal::findbyname(string input_name)
             }
         }
 
-        if(name_found == 0)
+        if(name_found == false)
         {
             cout << "Person does not exist" << endl << endl;
         }
