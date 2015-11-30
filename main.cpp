@@ -20,7 +20,8 @@ int main(int argc, char *argv[])
     {
         cout << "1) Show list of people" << endl
              << "2) Add a new person to the list" << endl
-             << "3) Exit the program" << endl;
+             << "3) Search for a person in the list" << endl
+             << "4) Exit the program" << endl;
 
         cout << "Pick a number: ";
         cin >> user_choice;
@@ -40,7 +41,43 @@ int main(int argc, char *argv[])
             cout << "What do you want to do next?" << endl;
         }
 
-        if (user_choice == 3)
+        if(user_choice == 3)
+        {
+            cout << "1) Search by name" << endl
+                 << "2) Search by gender" << endl
+                 << "3) Search by birth year" << endl
+                 << "4) Search by death year" << endl;
+            int choice;
+
+            cout << "Pick a number: ";
+            cin >> choice;
+            cout << endl;
+            cin.ignore(); //þessi lína kemur í veg fyrir að það sendist inn empty input
+
+            if(choice == 1) {
+                string name;
+
+                cout << "Search for the name: ";
+                cin >> name;
+
+                list.findbyname(name);
+             }
+
+            if(choice == 2)
+            {
+                string gender;
+
+                cout << "Search for gender: ";
+                cin >> gender;
+
+                list.findbygender(gender);
+
+            }
+
+            cout << "What do you want to do next?" << endl;
+        }
+
+        if (user_choice == 4)
         {
             cout <<"Thank you for using the program!" << endl
                  <<"Goodbye!" << endl;

@@ -21,6 +21,9 @@ public:
     void addPersonal();                                                      //Adds new person to the list
     void pushNewPersonal(string nam, string sex, string birt, string deat);  //Pushes new person into vectors
 
+    void findbyname(string input_name);
+    void findbygender(string gender);
+
     void writePersonal();                                                    //Writes all vectors into text files
     void writeNames();                                                       //Writes name vector into names.txt
     void writeGenders();                                                     //Writes gender vector into genders.txt
