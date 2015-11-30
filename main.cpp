@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
         cout << "Pick a number: ";
         cin >> user_choice;
         cout << endl;
-        cin.ignore();
+        cin.ignore(); //þessi lína kemur í veg fyrir að það sendist inn empty input
 
         if(user_choice == 1)
         {
