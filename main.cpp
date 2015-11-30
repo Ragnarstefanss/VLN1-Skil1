@@ -72,7 +72,29 @@ int main(int argc, char *argv[])
                 cout << "Search for gender: ";
                 cin >> gender;
 
-                list.findbyname(gender);
+                list.findbygender(gender);
+
+            }
+
+            if(choice == 3)
+            {
+                string birth_year;
+
+                cout << "Search for birth year: ";
+                cin >> birth_year;
+
+                list.findbybirthyear(birth_year);
+
+            }
+
+            if(choice == 4)
+            {
+                string death_year;
+
+                cout << "Search for death year: ";
+                cin >> death_year;
+
+                list.findbydeathyear(death_year);
 
             }
 
