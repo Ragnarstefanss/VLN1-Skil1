@@ -123,7 +123,7 @@ void Personal::diplayPersonal()
 {
     if(name.size() == 0)
     {
-        cout << "No people to display!" << endl;
+        cout << "No people to display!" << endl << endl;
     }
     else
     {
