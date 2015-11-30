@@ -10,20 +10,28 @@ class Personal
 {
 public:
     Personal();
-    void loadPersonal();
-    void addPerson();
+    void loadPersonal();                                                     //Loads input from files into vector
+    void loadNames();                                                        //Loads names.txt into name vector
+    void loadGenders();                                                      //Loads genders.txt into gender vector
+    void loadBirths();                                                       //Loads births.txt into birth vector
+    void loadDeaths();                                                       //Loads deaths.txt into death vector
+
+    void diplayPersonal();                                                   //Displays the list of people
+
+    void addPersonal();                                                      //Adds new person to the list
+    void pushNewPersonal(string nam, string sex, string birt, string deat);  //Pushes new person into vectors
+
+    void writePersonal();                                                    //Writes all vectors into text files
+    void writeNames();                                                       //Writes name vector into names.txt
+    void writeGenders();                                                     //Writes gender vector into genders.txt
+    void writeBirths();                                                      //Writes births vector into births.txt
+    void writeDeaths();                                                      //Writes deaths vector into deaths.txt
 
 private:
-    string name;
-    string gender;
-    int birth;
-    int death;
-    /*
     vector<string> name;
     vector<string> gender;
-    vector<int> birth;
-    vector<int> death;
-    */
+    vector<string> birth;
+    vector<string> death;
 };
 
 #endif // PERSONAL_H
