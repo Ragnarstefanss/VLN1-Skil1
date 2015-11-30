@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
             cout << "1) Search by name" << endl
                  << "2) Search by gender" << endl
                  << "3) Search by birth year" << endl
-                 << "4) Search by death year" << endl;
+                 << "4) Search by death year" << endl << endl;
             int choice;
 
             cout << "Pick a number: ";
@@ -60,7 +60,9 @@ int main(int argc, char *argv[])
                 cout << "Search for the name: ";
                 cin >> name;
 
+                cout << endl;
                 list.findbyname(name);
+                cout << endl;
              }
 
             if(choice == 2)
@@ -70,7 +72,7 @@ int main(int argc, char *argv[])
                 cout << "Search for gender: ";
                 cin >> gender;
 
-                list.findbygender(gender);
+                list.findbyname(gender);
 
             }
 
