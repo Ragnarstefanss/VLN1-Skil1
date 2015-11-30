@@ -326,19 +326,12 @@ void Personal::findbyname(string input_name)
                    << "Sex: " << gender[i] << endl
                    << "Born: " << birth[i] << endl
                    << "Died: " << death[i] << endl << endl;
-              found++;
+              found = found + 1;
            }
-           else
-           {
-               if(found == 0)
-               {
-                   //i = name.size() + 1; // þetta er eina leiðinn sem ég fann til að hindra að "Person does not exitst"
-                                        // komi upp því eitthvern vegin hundsar forritið else statementið þegar nafn finnst
-                                        // svo þegar notandi fannst kom alltaf þessi setning með
-
-                   cout << "Person does not exist" << endl << endl;
-                }
-           }
+        }
+        if(found == 0)
+        {
+                cout << "Person does not exist" << endl << endl;
 
         }
 
