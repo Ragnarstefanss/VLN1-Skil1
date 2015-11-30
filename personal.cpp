@@ -86,7 +86,7 @@ void Personal::addPersonal()
 
 
     BIRTH_LOOP:
-    cout << "Enter the date of birth: ";
+    cout << "Enter the year of birth: ";
     getline(cin, birth);
     while (birth == "")
     {
@@ -94,15 +94,67 @@ void Personal::addPersonal()
         cout << "Try again!" << endl << endl;
         goto BIRTH_LOOP;
     }
+    if(birth.length() == 4)
+    {
+        for (unsigned int i = 0; i < birth.length(); i++)
+        {
+            c = birth.at(i);
+            if ((c >= '0' && c <= '9'))
+            {
+                       //Right input
+            }
+            else
+            {
+                cout << "Wrong year input!" << endl;
+                cout << "Input a year containing exactly four numbers!" << endl << endl;
+                goto BIRTH_LOOP;
+            }
+        }
+    }
+    else
+    {
+        cout << "Wrong year input!" << endl;
+        cout << "Input a year containing exactly four numbers!" << endl << endl;
+        goto BIRTH_LOOP;
+    }
     cout << endl;
 
     DEATH_LOOP:
-    cout << "Enter the date of death (if person is alive enter a '-' instead): ";
+    cout << "Enter the year of death (if person is alive enter a '-' instead): ";
     getline(cin, death);
     while (death == "")
     {
         cout << "No entry found!" << endl;
         cout << "Try again!" << endl << endl;
+        goto DEATH_LOOP;
+    }
+    if(death.length() == 4)
+    {
+        for (unsigned int i = 0; i < death.length(); i++)
+        {
+            c = death.at(i);
+            if ((c >= '0' && c <= '9'))
+            {
+                       //Right input
+            }
+            else
+            {
+                cout << "Wrong year input!" << endl;
+                cout << "Input a year containing exactly four numbers or a '-' "
+                        "if the person is alive" << endl << endl;
+                goto DEATH_LOOP;
+            }
+        }
+    }
+    else if(death == "-")
+    {
+        //Right input
+    }
+    else
+    {
+        cout << "Wrong year input!" << endl;
+        cout << "Input a year containing exactly four numbers or a '-' "
+                "if the person is alive" << endl << endl;
         goto DEATH_LOOP;
     }
     cout << endl;
@@ -123,7 +175,7 @@ void Personal::diplayPersonal()
 {
     if(name.size() == 0)
     {
-        cout << "No people to display!" << endl << endl;
+        cout << "No people to display!" << endl;
     }
     else
     {
