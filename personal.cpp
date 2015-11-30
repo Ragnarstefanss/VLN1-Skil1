@@ -309,13 +309,14 @@ void Personal::loadDeaths()
 
 void Personal::findbyname(string input_name)
 {
+    bool name_found = false;
     if(name.size() == 0)
     {
         cout << "No person matched that search string!" << endl << endl;
     }
     else
     {
-        int found = 0;
+
         for(unsigned int i = 0; i < name.size();i++)
         {
             if(input_name == name[i])
@@ -324,11 +325,11 @@ void Personal::findbyname(string input_name)
                     << "Sex: " << gender[i] << endl
                     << "Born: " << birth[i] << endl
                     << "Died: " << death[i] << endl << endl;
-               found = found + 1;
+                name_found = true;
             }
         }
 
-        if(found == 0)
+        if(name_found == 0)
         {
             cout << "Person does not exist" << endl << endl;
         }
@@ -338,13 +339,13 @@ void Personal::findbyname(string input_name)
 
 void Personal::findbygender(string input_gender)
 {
+    bool gender_found = false;
     if(gender.size() == 0)
     {
         cout << "No person matched that search string!" << endl << endl;
     }
     else
     {
-        int found = 0;
         for(unsigned int i = 0; i < gender.size();i++)
         {
             if(input_gender == gender[i])
@@ -353,11 +354,11 @@ void Personal::findbygender(string input_gender)
                     << "Sex: " << gender[i] << endl
                     << "Born: " << birth[i] << endl
                     << "Died: " << death[i] << endl << endl;
-               found = found + 1;
+               gender_found = true;
             }
         }
 
-        if(found == 0)
+        if(gender_found == false)
         {
             cout << "Person does not exist" << endl << endl;
         }
@@ -368,13 +369,13 @@ void Personal::findbygender(string input_gender)
 
 void Personal::findbybirthyear(string input_byear)
 {
+    bool byear_found = false;
     if(birth.size() == 0)
     {
         cout << "No person matched that search string!" << endl << endl;
     }
     else
     {
-        int found = 0;
         for(unsigned int i = 0; i < birth.size();i++)
         {
             if(input_byear == birth[i])
@@ -383,11 +384,11 @@ void Personal::findbybirthyear(string input_byear)
                     << "Sex: " << gender[i] << endl
                     << "Born: " << birth[i] << endl
                     << "Died: " << death[i] << endl << endl;
-               found = found + 1;
+               byear_found = true;
             }
         }
 
-        if(found == 0)
+        if(byear_found == false)
         {
             cout << "Person does not exist" << endl << endl;
         }
@@ -398,13 +399,13 @@ void Personal::findbybirthyear(string input_byear)
 
 void Personal::findbydeathyear(string input_dyear)
 {
+    bool dyear_found = false;
     if(death.size() == 0)
     {
         cout << "No person matched that search string!" << endl << endl;
     }
     else
     {
-        int found = 0;
         for(unsigned int i = 0; i < death.size();i++)
         {
             if(input_dyear == death[i])
@@ -413,11 +414,11 @@ void Personal::findbydeathyear(string input_dyear)
                     << "Sex: " << gender[i] << endl
                     << "Born: " << birth[i] << endl
                     << "Died: " << death[i] << endl << endl;
-               found = found + 1;
+               dyear_found = true;
             }
         }
 
-        if(found == 0)
+        if(dyear_found == false)
         {
             cout << "Person does not exist" << endl << endl;
         }
