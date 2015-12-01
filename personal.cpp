@@ -186,12 +186,12 @@ void Personal::addPersonal()
 
     if(sex == "female")
     {
-        sex = "Female";
+        sex[0] = toupper(sex[0]);
     }
 
     if(sex == "male")
     {
-        sex = "Male";
+        sex[0] = toupper(sex[0]);
     }
     cout << endl;
 
@@ -385,11 +385,11 @@ void Personal::loadGenders()
     {
         if (line == "female")
         {
-            line = "Female";
+            line[0] = toupper(line[0]);
         }
         if (line == "male")
         {
-            line = "Male";
+            line[0] = toupper(line[0]);
         }
         gender.push_back(line);
     }
@@ -493,12 +493,28 @@ void Personal::findbytype(string input, string type)
     }
     else
     {
-        string temp;
+        string temp, searchedName;
         for(unsigned int i = 0; i < name.size();i++)
         {
             if(type == "name")
             {
                 temp = name[i];
+                for(unsigned int g = 0; g < input.size(); g++)
+                {
+                    if (input[g] == temp[g])
+                    {
+                        //Character in input string number 'g' is the same as character number g in
+                        //the name we are looking for.
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    if(g == input.size() - 1)
+                    {
+                        searchedName = temp;     //Found all characters
+                    }
+                }
             }
             else if(type == "gender")
             {
@@ -513,7 +529,7 @@ void Personal::findbytype(string input, string type)
                 temp = death[i];
             }
 
-            if(input == temp)
+            if(input == temp || searchedName == temp)
             {
                cout << "Name: " << name[i] << endl
                     << "Sex: " << gender[i] << endl

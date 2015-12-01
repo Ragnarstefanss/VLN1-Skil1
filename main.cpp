@@ -80,7 +80,9 @@ int main(int argc, char *argv[])
                 string type = "name";
 
                 cout << "Search for the name: ";
-                cin >> name;
+                getline(cin, name);
+                name[0] = toupper(name[0]);
+
 
                 cout << endl;
                 list.findbytype(name, type);
@@ -94,9 +96,9 @@ int main(int argc, char *argv[])
 
                 cout << "Search for gender: ";
                 cin >> gender;
+                gender[0] = toupper(gender[0]);
 
                 list.findbytype(gender, type);
-
             }
 
             if(choice == 3)
@@ -108,7 +110,6 @@ int main(int argc, char *argv[])
                 cin >> birth_year;
 
                 list.findbytype(birth_year, type);
-
             }
 
             if(choice == 4)
@@ -120,7 +121,6 @@ int main(int argc, char *argv[])
                 cin >> death_year;
 
                 list.findbytype(death_year, type);
-
             }
 
             cout << "What do you want to do next?" << endl;
