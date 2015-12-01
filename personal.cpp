@@ -157,7 +157,7 @@ void Personal::addPersonal()
         }
         else
         {
-            cout << "Only alphabetic letters and spaces allowed!" << endl;
+            cout << "Only alphabetic letters and spaces are allowed!" << endl;
             cout << "Try again!" << endl << endl;
             goto NAME_LOOP;
         }
@@ -232,7 +232,7 @@ void Personal::addPersonal()
 
 
     DEATH_LOOP:
-    cout << "Enter the year of death (if person is alive enter a '-' instead): ";
+    cout << "Enter the year of death (if person is still alive enter a '-' instead): ";
     getline(cin, death);
     while (death == "")
     {
@@ -253,7 +253,7 @@ void Personal::addPersonal()
             {
                 cout << "Wrong year input!" << endl;
                 cout << "Input a year containing exactly four numbers or a '-' "
-                        "if the person is alive" << endl << endl;
+                        "if the person is still alive" << endl << endl;
                 goto DEATH_LOOP;
             }
         }
