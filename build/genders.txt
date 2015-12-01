@@ -1,4 +1,6 @@
-male
-male
-male
-female
+Male
+Male
+Male
+Female
+Male
+Male

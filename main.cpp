@@ -8,9 +8,10 @@
 
 using namespace std;
 
+void displayListSorted(int sortChoice, Personal& list);
 void displaySortChoices();
 void displayFindChoices();
-
+void searchForPerson(Personal& list);
 
 int main(int argc, char *argv[])
 {
@@ -37,7 +38,6 @@ int main(int argc, char *argv[])
         if(user_choice == 1)
         {
             list.displayPersonal();
-
             cout << "What do you want to do next?" << endl;
         }
         if(user_choice == 2)
@@ -47,82 +47,11 @@ int main(int argc, char *argv[])
         }
         if (user_choice == 3)
         {
-            while(true)
-            {
-                 displaySortChoices();
-                 cout << "Pick a number: ";
-                 cin >> sortChoice;
-                 cout << endl;
-                 cin.ignore();
-
-                 if((sortChoice < 1) || (sortChoice > 9))
-                 {
-                     cout <<"Wrong number!" << endl << endl;
-                 }
-                 else
-                 {
-                    list.sort(sortChoice);
-                    break;
-                 }
-            }
+            displayListSorted(sortChoice, list);
         }
         if(user_choice == 4)
         {
-            displayFindChoices();
-            int choice;
-            cout << "Pick a number: ";
-            cin >> choice;
-            cout << endl;
-            cin.ignore(); //þessi lína kemur í veg fyrir að það sendist inn empty input
-
-            if(choice == 1) {
-                string name;
-                string type = "name";
-
-                cout << "Search for the name: ";
-                getline(cin, name);
-                name[0] = toupper(name[0]);
-
-
-                cout << endl;
-                list.findbytype(name, type);
-                cout << endl;
-             }
-
-            if(choice == 2)
-            {
-                string gender;
-                string type = "gender";
-
-                cout << "Search for gender: ";
-                cin >> gender;
-                gender[0] = toupper(gender[0]);
-
-                list.findbytype(gender, type);
-            }
-
-            if(choice == 3)
-            {
-                string birth_year;
-                string type = "birth";
-
-                cout << "Search for birth year: ";
-                cin >> birth_year;
-
-                list.findbytype(birth_year, type);
-            }
-
-            if(choice == 4)
-            {
-                string death_year;
-                string type = "death";
-
-                cout << "Search for death year: ";
-                cin >> death_year;
-
-                list.findbytype(death_year, type);
-            }
-
+            searchForPerson(list);
             cout << "What do you want to do next?" << endl;
         }
         if (user_choice == 5)
@@ -131,12 +60,98 @@ int main(int argc, char *argv[])
                  <<"Goodbye!" << endl;
             exit(0);
         }
+
         if ((user_choice < 1) || (user_choice > 4))
         {
             cout <<"Wrong number!" << endl;
         }
     }
     return a.exec();
+}
+
+void searchForPerson(Personal& list)
+{
+    displayFindChoices();
+    int choice;
+    cout << "Pick a number: ";
+    cin >> choice;
+    cout << endl;
+    cin.ignore(); //þessi lína kemur í veg fyrir að það sendist inn empty input
+
+    if(choice == 1) {
+        string name;
+        string type = "name";
+
+        cout << "Search for the name: ";
+        getline(cin, name);
+        name[0] = toupper(name[0]);
+
+
+        cout << endl;
+        list.findbytype(name, type);
+        cout << endl;
+     }
+
+   else if(choice == 2)
+    {
+        string gender;
+        string type = "gender";
+
+        cout << "Search for gender: ";
+        cin >> gender;
+        gender[0] = toupper(gender[0]);
+
+        list.findbytype(gender, type);
+    }
+
+    else if(choice == 3)
+    {
+        string birth_year;
+        string type = "birth";
+
+        cout << "Search for birth year: ";
+        cin >> birth_year;
+
+        list.findbytype(birth_year, type);
+    }
+
+    else if(choice == 4)
+    {
+        string death_year;
+        string type = "death";
+
+        cout << "Search for death year: ";
+        cin >> death_year;
+
+        list.findbytype(death_year, type);
+    }
+
+    else
+    {
+        cout <<"Wrong number!" << endl;
+    }
+}
+
+void displayListSorted(int sortChoice, Personal& list)
+{
+    while(true)
+    {
+         displaySortChoices();
+         cout << "Pick a number: ";
+         cin >> sortChoice;
+         cout << endl;
+         cin.ignore();
+
+         if((sortChoice < 1) || (sortChoice > 9))
+         {
+             cout <<"Wrong number!" << endl << endl;
+         }
+         else
+         {
+            list.sort(sortChoice);
+            break;
+         }
+    }
 }
 
 void displaySortChoices()
