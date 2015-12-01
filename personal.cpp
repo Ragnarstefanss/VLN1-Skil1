@@ -5,9 +5,9 @@
 #include <vector>
 #include <string>
 #include <stdio.h>
+#include <ctype.h>
 
 using namespace std;
-
 
 
 Personal::Personal()
@@ -34,12 +34,109 @@ void Personal::writePersonal()
     writeDeaths();
 }
 
+void Personal::sort(int choice)
+{
+    sortedName = name;
+    sortedGender = gender;
+    sortedBirth = birth;
+    sortedDeath = death;
+
+
+    unsigned int sizeOfVector = sortedName.size();
+    unsigned int reps = sortedName.size() - 1;
+
+    string tempName, tempGender, tempBirth, tempDeath;
+
+    if(sizeOfVector == 0)
+    {
+        cout << "Cant sort an empty list!" << endl;
+    }
+    else
+    {
+        sortDisplay(choice);
+        for(unsigned int a = 0; a < reps; a++)
+        {
+            for(unsigned int i = 0; i < reps; i++)
+            {
+                if(choice == 1)
+                {
+                    if (sortedName[i] > sortedName[i+1])
+                    {
+                        sortingAlgorithm(i);
+                    }
+                }
+                else if(choice == 2)
+                {
+                    if (sortedName[i] < sortedName[i+1])
+                    {
+                        sortingAlgorithm(i);
+                    }
+                }
+                else if(choice == 3)
+                {
+                    if (sortedGender[i] > sortedGender[i+1])
+                    {
+                        sortingAlgorithm(i);
+                    }
+                }
+                else if(choice == 4)
+                {
+                    if (sortedGender[i] < sortedGender[i+1])
+                    {
+                        sortingAlgorithm(i);
+                    }
+                }
+                else if(choice == 5)
+                {
+                    if (sortedBirth[i] > sortedBirth[i+1])
+                    {
+                        sortingAlgorithm(i);
+                    }
+                }
+                else if(choice == 6)
+                {
+                    if (sortedBirth[i] < sortedBirth[i+1])
+                    {
+                        sortingAlgorithm(i);
+                    }
+                }
+                else if(choice == 7)
+                {
+                    if (sortedDeath[i] > sortedDeath[i+1])
+                    {
+                        sortingAlgorithm(i);
+                    }
+                }
+                else if(choice == 8)
+                {
+                    if (sortedDeath[i] < sortedDeath[i+1])
+                    {
+                        sortingAlgorithm(i);
+                    }
+                }
+             }
+        }
+        displaySorted();
+    }
+
+}
+
+void Personal::displaySorted()
+{
+    for(unsigned int i = 0; i < sortedName.size();i++)
+    {
+        cout << "Name: " << sortedName[i] << endl
+             << "Sex: " << sortedGender[i] << endl
+             << "Born: " << sortedBirth[i] << endl
+             << "Died: " << sortedDeath[i] << endl << endl;
+    }
+}
+
 
 void Personal::addPersonal()
 {
     string name, sex, birth, death;
     char c;
-
 
     NAME_LOOP:
     cout << "Enter the name of the person you wish to add: ";
@@ -50,6 +147,7 @@ void Personal::addPersonal()
         cout << "Try again!" << endl << endl;
         goto NAME_LOOP;
     }
+
     for (unsigned int i = 0; i < name.length(); i++)
     {
         c = name.at(i);
@@ -64,23 +162,36 @@ void Personal::addPersonal()
             goto NAME_LOOP;
         }
     }
+    name[0] = toupper(name[0]);                                         //Makes the first character of a name a capital letter
     cout << endl;
 
 
     SEX_LOOP:
     cout << "Enter the gender: ";
     getline(cin, sex);
+
     while (sex == "")
     {
         cout << "No entry found!" << endl;
         cout << "Try again!" << endl << endl;
         goto SEX_LOOP;
     }
+
     while((sex != "Male") && (sex != "male") && (sex != "Female") && (sex != "female"))
     {
         cout << "Wrong input! Enter either male or female, no transsexuals allowed!" << endl;
         cout << "Try again!" << endl << endl;
         goto SEX_LOOP;
+    }
+
+    if(sex == "female")
+    {
+        sex = "Female";
+    }
+
+    if(sex == "male")
+    {
+        sex = "Male";
     }
     cout << endl;
 
@@ -118,6 +229,7 @@ void Personal::addPersonal()
         goto BIRTH_LOOP;
     }
     cout << endl;
+
 
     DEATH_LOOP:
     cout << "Enter the year of death (if person is alive enter a '-' instead): ";
@@ -171,7 +283,7 @@ void Personal::pushNewPersonal(string nam, string sex, string birt, string deat)
     death.push_back(deat);
 }
 
-void Personal::diplayPersonal()
+void Personal::displayPersonal()
 {
     if(name.size() == 0)
     {
@@ -254,6 +366,7 @@ void Personal::loadNames()
 
     while (getline(readNames, line))
     {
+        line[0] = toupper(line[0]);                                //Makes the first character of a name a capital letter
         name.push_back(line);
     }
 }
@@ -270,6 +383,14 @@ void Personal::loadGenders()
 
     while (getline(readGenders, line))
     {
+        if (line == "female")
+        {
+            line = "Female";
+        }
+        if (line == "male")
+        {
+            line = "Male";
+        }
         gender.push_back(line);
     }
 
@@ -307,7 +428,63 @@ void Personal::loadDeaths()
     }
 }
 
-void Personal::findbyname(string input_name)
+void Personal::sortingAlgorithm(int i)
+{
+    string tempName, tempGender, tempBirth, tempDeath;
+
+    tempName = sortedName[i];
+    tempGender = sortedGender[i];
+    tempBirth = sortedBirth[i];
+    tempDeath = sortedDeath[i];
+
+    sortedName[i] = sortedName[i+1];
+    sortedGender[i] = sortedGender[i+1];
+    sortedBirth[i] = sortedBirth[i+1];
+    sortedDeath[i] = sortedDeath[i+1];
+
+    sortedName[i+1] = tempName;
+    sortedGender[i+1] = tempGender;
+    sortedBirth[i+1] = tempBirth;
+    sortedDeath[i+1] = tempDeath;
+}
+
+void Personal::sortDisplay(int s)
+{
+    if(s == 1)
+    {
+        cout << "List sorted by names in ascending order:" << endl;
+    }
+    if(s == 2)
+    {
+        cout << "List sorted by names in descending order:" << endl;
+    }
+    if(s == 3)
+    {
+        cout << "List sorted by gender(female):" << endl;
+    }
+    if(s == 4)
+    {
+        cout << "List sorted by gender(male):" << endl;
+    }
+    if(s == 5)
+    {
+        cout << "List sorted by year of birth(ascending):" << endl;
+    }
+    if(s == 6)
+    {
+        cout << "List sorted by year of birth(descending):" << endl;
+    }
+    if(s == 7)
+    {
+        cout << "List sorted by year of death(ascending):" << endl;
+    }
+    if(s == 8)
+    {
+        cout << "List sorted by year of birth(descending):" << endl;
+    }
+}
+
+void Personal::findbytype(string input, string type)
 {
     bool name_found = false;
     if(name.size() == 0)
@@ -316,10 +493,27 @@ void Personal::findbyname(string input_name)
     }
     else
     {
-
+        string temp;
         for(unsigned int i = 0; i < name.size();i++)
         {
-            if(input_name == name[i])
+            if(type == "name")
+            {
+                temp = name[i];
+            }
+            else if(type == "gender")
+            {
+                temp = gender[i];
+            }
+            else if(type == "birth")
+            {
+                temp = birth[i];
+            }
+            else if(type == "death")
+            {
+                temp = death[i];
+            }
+
+            if(input == temp)
             {
                cout << "Name: " << name[i] << endl
                     << "Sex: " << gender[i] << endl
@@ -328,101 +522,9 @@ void Personal::findbyname(string input_name)
                 name_found = true;
             }
         }
-
         if(name_found == false)
         {
             cout << "Person does not exist" << endl << endl;
         }
-
      }
-}
-
-void Personal::findbygender(string input_gender)
-{
-    bool gender_found = false;
-    if(gender.size() == 0)
-    {
-        cout << "No person matched that search string!" << endl << endl;
-    }
-    else
-    {
-        for(unsigned int i = 0; i < gender.size();i++)
-        {
-            if(input_gender == gender[i])
-            {
-               cout << "Name: " << name[i] << endl
-                    << "Sex: " << gender[i] << endl
-                    << "Born: " << birth[i] << endl
-                    << "Died: " << death[i] << endl << endl;
-               gender_found = true;
-            }
-        }
-
-        if(gender_found == false)
-        {
-            cout << "Person does not exist" << endl << endl;
-        }
-
-     }
-}
-
-
-void Personal::findbybirthyear(string input_byear)
-{
-    bool byear_found = false;
-    if(birth.size() == 0)
-    {
-        cout << "No person matched that search string!" << endl << endl;
-    }
-    else
-    {
-        for(unsigned int i = 0; i < birth.size();i++)
-        {
-            if(input_byear == birth[i])
-            {
-               cout << "Name: " << name[i] << endl
-                    << "Sex: " << gender[i] << endl
-                    << "Born: " << birth[i] << endl
-                    << "Died: " << death[i] << endl << endl;
-               byear_found = true;
-            }
-        }
-
-        if(byear_found == false)
-        {
-            cout << "Person does not exist" << endl << endl;
-        }
-
-     }
-
-}
-
-void Personal::findbydeathyear(string input_dyear)
-{
-    bool dyear_found = false;
-    if(death.size() == 0)
-    {
-        cout << "No person matched that search string!" << endl << endl;
-    }
-    else
-    {
-        for(unsigned int i = 0; i < death.size();i++)
-        {
-            if(input_dyear == death[i])
-            {
-               cout << "Name: " << name[i] << endl
-                    << "Sex: " << gender[i] << endl
-                    << "Born: " << birth[i] << endl
-                    << "Died: " << death[i] << endl << endl;
-               dyear_found = true;
-            }
-        }
-
-        if(dyear_found == false)
-        {
-            cout << "Person does not exist" << endl << endl;
-        }
-
-     }
-
 }
