@@ -20,7 +20,9 @@ public:
     void displaySorted();                                                    //Displays the sorted list
 
     void addPersonal();                                                      //Adds new person to the list
+    void deletePersonal();                                                   //Removes a person from the list
     void pushNewPersonal(string nam, string sex, string birt, string deat);  //Pushes new person into vectors
+    void removalAlgorithm(int pNumber);                                      //Removal magic happens in this function
 
     void writePersonal();                                                    //Writes all vectors into text files
     void writeNames();                                                       //Writes name vector into names.txt
@@ -32,7 +34,7 @@ public:
     void sortingAlgorithm(int i);                                            //This function inholds all the sorting magic
     void sortDisplay(int s);                                                 //Displays sorting information
 
-    void findbytype(string input, string type);                              // Search function
+    void findbytype(string input, string type);                              //Searchs the list for names, genders, dates of births and deaths
 
 
 private:

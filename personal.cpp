@@ -132,6 +132,35 @@ void Personal::displaySorted()
     }
 }
 
+void Personal::deletePersonal()
+{
+    if(name.size() == 0)
+    {
+        cout << "There is nobody to remove!" << endl;
+    }
+    else
+    {
+        cout << "Who do you want to remove?" << endl;
+        int a = 1;
+        int pNumber;
+        for(unsigned int i = 0; i < name.size();i++)
+        {
+            cout << a << ": " << name[i] << endl;
+            a++;
+        }
+        cout << endl << "Write the number of the person you wish to remove: ";
+        cin >> pNumber;
+        while((pNumber) < 1 || (pNumber > a))
+        {
+            cout << "Choose a valid number from the list!" << endl
+                 << "Write the number of the person you wish to remove: ";
+            cin >> pNumber;
+        }
+        removalAlgorithm(pNumber);
+        writePersonal();
+        cout << "Removing complete!" << endl << endl;
+    }
+}
 
 void Personal::addPersonal()
 {
@@ -157,7 +186,7 @@ void Personal::addPersonal()
         }
         else
         {
-            cout << "Only alphabetic letters and spaces allowed!" << endl;
+            cout << "Only alphabetic letters and spaces are allowed!" << endl;
             cout << "Try again!" << endl << endl;
             goto NAME_LOOP;
         }
@@ -232,7 +261,7 @@ void Personal::addPersonal()
 
 
     DEATH_LOOP:
-    cout << "Enter the year of death (if person is alive enter a '-' instead): ";
+    cout << "Enter the year of death (if person is still alive enter a '-' instead): ";
     getline(cin, death);
     while (death == "")
     {
@@ -253,7 +282,7 @@ void Personal::addPersonal()
             {
                 cout << "Wrong year input!" << endl;
                 cout << "Input a year containing exactly four numbers or a '-' "
-                        "if the person is alive" << endl << endl;
+                        "if the person is still alive" << endl << endl;
                 goto DEATH_LOOP;
             }
         }
@@ -446,6 +475,15 @@ void Personal::sortingAlgorithm(int i)
     sortedGender[i+1] = tempGender;
     sortedBirth[i+1] = tempBirth;
     sortedDeath[i+1] = tempDeath;
+}
+
+void Personal::removalAlgorithm(int pNumber)
+{
+    pNumber = pNumber - 1;
+    name.erase (name.begin()+ pNumber);
+    gender.erase (gender.begin()+ pNumber);
+    birth.erase (birth.begin()+ pNumber);
+    death.erase (death.begin()+ pNumber);
 }
 
 void Personal::sortDisplay(int s)
