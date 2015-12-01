@@ -242,6 +242,7 @@ void Personal::writeDeaths()
     }
 }
 
+
 void Personal::loadNames()
 {
     ifstream readNames("names.txt");

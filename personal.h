@@ -22,7 +22,7 @@ public:
     void pushNewPersonal(string nam, string sex, string birt, string deat);  //Pushes new person into vectors
 
 
-    void findbytype(string input, string type);                               // Search for a specific name
+    void findbytype(string input, string type);                               // Search function
 
     void writePersonal();                                                    //Writes all vectors into text files
     void writeNames();                                                       //Writes name vector into names.txt
