@@ -1,4 +1,5 @@
 Bill Gates
+Steve Jobs
 Blaise Pascal
 John Mauchly
 J Presper Eckert
@@ -8,8 +9,10 @@ Paul Allen
 Grace Hopper
 Alan Turing
 Margaret Hamilton
+Linus Torvalds
 Ken Thompson
 Dennis Ritchie
 Ken Williams
 Roberta Williams
 Seymour Cray
+William Norris
