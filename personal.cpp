@@ -150,11 +150,22 @@ void Personal::deletePersonal()
         }
         cout << endl << "Write the number of the person you wish to remove: ";
         cin >> pNumber;
+        if (cin.fail())                                                              //Checks if input is a number
+        {
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
+
         while((pNumber) < 1 || (pNumber > a))
         {
             cout << "Choose a valid number from the list!" << endl
                  << "Write the number of the person you wish to remove: ";
             cin >> pNumber;
+            if (cin.fail())                                                         //Checks if input is a number
+            {
+                cin.clear();
+                cin.ignore(100, '\n');
+            }
         }
         removalAlgorithm(pNumber);
         writePersonal();

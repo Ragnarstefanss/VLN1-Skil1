@@ -32,8 +32,14 @@ int main(int argc, char *argv[])
 
         cout << "Pick a number: ";
         cin >> user_choice;
+        cin.ignore();                                         //þessi lína kemur í veg fyrir að það sendist inn empty input
+        if (cin.fail())                                       //Checks if input is a number
+        {
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
         cout << endl;
-        cin.ignore();
+
 
         if(user_choice == 1)
         {
@@ -80,8 +86,14 @@ void searchForPerson(Personal& list)
     int choice;
     cout << "Pick a number: ";
     cin >> choice;
+    cin.ignore();                                         //þessi lína kemur í veg fyrir að það sendist inn empty input
+    if (cin.fail())                                       //Checks if input is a number
+    {
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
     cout << endl;
-    cin.ignore(); //þessi lína kemur í veg fyrir að það sendist inn empty input
+
 
     while((choice < 1) || (choice > 4))
     {
@@ -89,8 +101,13 @@ void searchForPerson(Personal& list)
         displayFindChoices();
         cout << "Pick a number: ";
         cin >> choice;
+        cin.ignore();                                   //þessi lína kemur í veg fyrir að það sendist inn empty input
+        if (cin.fail())                                       //Checks if input is a number
+        {
+            cin.clear();
+            cin.ignore(100, '\n');
+        }
         cout << endl;
-        cin.ignore();
     }
     if(choice == 1)
     {
@@ -145,8 +162,13 @@ void displayListSorted(Personal& list)
          displaySortChoices();
          cout << "Pick a number: ";
          cin >> sortChoice;
+         cin.ignore();                                   //þessi lína kemur í veg fyrir að það sendist inn empty input
+         if (cin.fail())                                       //Checks if input is a number
+         {
+             cin.clear();
+             cin.ignore(100, '\n');
+         }
          cout << endl;
-         cin.ignore();
 
          if((sortChoice < 1) || (sortChoice > 8))
          {
@@ -159,6 +181,45 @@ void displayListSorted(Personal& list)
          }
     }
 }
+
+void editingChoices(Personal& list)
+{
+    int listEdit;
+    cout << "What do you want to do?" << endl
+         << "1) Add a person to the list" << endl
+         << "2) Remove a person from the list" << endl
+         << "Pick a number: ";
+         cin >> listEdit;
+         cin.ignore();                                              //þessi lína kemur í veg fyrir að það sendist inn empty input
+         if (cin.fail())                                            //Checks if input is a number
+         {
+             cin.clear();
+             cin.ignore(100, '\n');
+         }
+         while((listEdit != 1) && (listEdit != 2))
+         {
+             cout <<"Choose either option 1 or 2!" << endl
+                  << "Pick a number: ";
+             cin >> listEdit;
+             cin.ignore();                                         //þessi lína kemur í veg fyrir að það sendist inn empty input
+             if (cin.fail())                                       //Checks if input is a number
+             {
+                 cin.clear();
+                 cin.ignore(100, '\n');
+             }
+         }
+         if(listEdit == 1)
+         {
+             cout << endl;
+             list.addPersonal();
+         }
+         else
+         {
+             cout << endl;
+             list.deletePersonal();
+         }
+}
+
 
 void displaySortChoices()
 {
@@ -178,32 +239,4 @@ void displayFindChoices()
          << "2) Search by gender" << endl
          << "3) Search by birth year" << endl
          << "4) Search by death year" << endl << endl;
-}
-
-void editingChoices(Personal& list)
-{
-    int listEdit;
-    cout << "What do you want to do?" << endl
-         << "1) Add a person to the list" << endl
-         << "2) Remove a person from the list" << endl
-         << "Pick a number: ";
-         cin >> listEdit;
-         cin.ignore();
-         while((listEdit != 1) && (listEdit != 2))
-         {
-             cout <<"Choose either option 1 or 2!" << endl
-                  << "Pick a number: ";
-             cin >> listEdit;
-             cin.ignore();
-         }
-         if(listEdit == 1)
-         {
-             cout << endl;
-             list.addPersonal();
-         }
-         else
-         {
-             cout << endl;
-             list.deletePersonal();
-         }
 }
