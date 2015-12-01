@@ -21,10 +21,8 @@ public:
     void addPersonal();                                                      //Adds new person to the list
     void pushNewPersonal(string nam, string sex, string birt, string deat);  //Pushes new person into vectors
 
-    void findbyname(string input_name);                                      // Search for a specific name
-    void findbygender(string input_gender);                                  // Search for a specific gender
-    void findbybirthyear(string input_byear);                                // Search for a specific birth year
-    void findbydeathyear(string input_dyear);                                // Search for a specific dearh year
+
+    void findbytype(string input, string type);                               // Search for a specific name
 
     void writePersonal();                                                    //Writes all vectors into text files
     void writeNames();                                                       //Writes name vector into names.txt

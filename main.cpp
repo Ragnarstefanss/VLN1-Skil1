@@ -56,45 +56,49 @@ int main(int argc, char *argv[])
 
             if(choice == 1) {
                 string name;
+                string type = "name";
 
                 cout << "Search for the name: ";
                 cin >> name;
 
                 cout << endl;
-                list.findbyname(name);
+                list.findbytype(name, type);
                 cout << endl;
              }
 
             if(choice == 2)
             {
                 string gender;
+                string type = "gender";
 
                 cout << "Search for gender: ";
                 cin >> gender;
 
-                list.findbygender(gender);
+                list.findbytype(gender, type);
 
             }
 
             if(choice == 3)
             {
                 string birth_year;
+                string type = "birth";
 
                 cout << "Search for birth year: ";
                 cin >> birth_year;
 
-                list.findbybirthyear(birth_year);
+                list.findbytype(birth_year, type);
 
             }
 
             if(choice == 4)
             {
                 string death_year;
+                string type = "death";
 
                 cout << "Search for death year: ";
                 cin >> death_year;
 
-                list.findbydeathyear(death_year);
+                list.findbytype(death_year, type);
 
             }
 
